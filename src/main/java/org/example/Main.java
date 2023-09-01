@@ -11,16 +11,17 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Double> inputs = List.of(35.2, 3.145, 2.83, 4.55);
 
         SparkConf conf = new SparkConf().setAppName("tryingSpark").setMaster("local[*]");
         try (JavaSparkContext sc = new JavaSparkContext(conf)) {
             Logger log = LogManager.getRootLogger();
             Logger.getLogger("org.apache").setLevel(Level.WARN);
 
-            JavaRDD<Double> myRDD = sc.parallelize(inputs);
-            double res = myRDD.reduce(Double::sum);
-            log.info("RESULT: " + res);
+            JavaRDD<String> data = sc.textFile("src/main/resources/subtitles/input.txt")
+                    .flatMap(line -> List.of(line.split(" ")).iterator());
+
+            data.foreach(el -> System.out.println(el));
+
         }
 
     }
