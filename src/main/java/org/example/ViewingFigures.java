@@ -73,13 +73,13 @@ public class ViewingFigures
 		);
 
 		// Calculate views per course / total chapters
-		JavaPairRDD<Integer, Double> asFraction = withChaptersPerCourse.mapToPair(
-				el -> new Tuple2<>(el._1, el._2._1 / (el._2._2 * 1.0))
+		JavaPairRDD<Integer, Double> asFraction = withChaptersPerCourse.mapValues(
+				el -> el._1 / (el._2 * 1.0)
 		);
 
 		// Map fraction to score
-		JavaPairRDD<Integer, Integer> asScore = asFraction.mapToPair(
-				el -> new Tuple2<>(el._1, getScore(el._2))
+		JavaPairRDD<Integer, Integer> asScore = asFraction.mapValues(
+				ViewingFigures::getScore
 		);
 
 
