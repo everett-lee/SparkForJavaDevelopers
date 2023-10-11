@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -11,8 +8,6 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
-import org.apache.spark.sql.sources.In;
-import scala.Int;
 import scala.Tuple2;
 
 /**
@@ -104,6 +99,7 @@ public class ViewingFigures
 			System.out.println(el);
 
 		});
+
 		sc.close();
 	}
 

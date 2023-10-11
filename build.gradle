@@ -17,10 +17,11 @@ dependencies {
     implementation group: 'org.apache.spark', name: 'spark-core_2.13', version: '3.3.2'
 
     // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
-    compileOnly group: 'org.apache.spark', name: 'spark-sql_2.13', version: '3.3.2'
+    implementation group: 'org.apache.spark', name: 'spark-sql_2.13', version: '3.3.2'
 
     // https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs
-    testImplementation group: 'org.apache.hadoop', name: 'hadoop-hdfs', version: '3.2.0'
+    implementation group: 'org.apache.hadoop', name: 'hadoop-hdfs', version: '3.3.2'
+
 }
 
 test {
